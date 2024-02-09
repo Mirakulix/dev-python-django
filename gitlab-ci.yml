@@ -1,0 +1,36 @@
+image: python:3.10
+
+stages:
+  - lint
+  - security
+
+before_script:
+  - pip install -r requirements-dev.txt
+
+lint:
+  stage: lint
+  script:
+    - echo "Running Flake8"
+    - flake8 .
+    - echo "Checking code format with Black"
+    - black --check .
+    - echo "Checking import order with isort"
+    - isort --check-only .
+    - echo "Running MyPy for type checking"
+    - mypy .
+    - echo "Running Pylint"
+    - pylint **/*.py
+  only:
+    - merge_requests
+    - master
+
+security:
+  stage: security
+  script:
+    - echo "Running Bandit for security issues"
+    - bandit -r .
+    - echo "Checking for known security vulnerabilities with Safety"
+    - safety check
+  only:
+    - merge_requests
+    - master
