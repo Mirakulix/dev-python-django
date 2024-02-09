@@ -18,7 +18,7 @@ This project template is designed to streamline Django development by integratin
 To install the required Python packages, run:
 
 ```bash
-pip install -r requirements-dev.txt
+pip install -r lint-requirements.txt
 ```
 
 ## Linting Tools
