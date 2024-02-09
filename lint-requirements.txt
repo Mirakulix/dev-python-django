@@ -1,0 +1,8 @@
+flake8
+black
+isort
+mypy
+bandit
+django==4.2
+pylint
+safety
