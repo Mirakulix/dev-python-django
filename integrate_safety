@@ -1,0 +1,9 @@
+# This script is for running safety check and integrating it into your CI/CD pipeline.
+import subprocess
+
+def check_dependencies_for_vulnerabilities():
+    print("Checking dependencies for known vulnerabilities with Safety...")
+    subprocess.run(["safety", "check"])
+
+if __name__ == "__main__":
+    check_dependencies_for_vulnerabilities()
